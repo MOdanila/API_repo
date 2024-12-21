@@ -7,6 +7,7 @@ import { fileURLToPath } from "url";
 const app = express();
 const port = 5001;
 const prisma = new PrismaClient();
+const allowedOrigins = ['https://notes-frontend-gkgx.onrender.com'];
 
 // Define __dirname for ES module
 const __filename = fileURLToPath(import.meta.url);
@@ -17,7 +18,11 @@ app.use(express.json());
 app.get("*", (req, res) => {
     res.sendFile(path.join(__dirname, "client/build/index.html"));
 });
-app.use(cors());
+app.use(cors({
+    origin: allowedOrigins,
+    methods: ['GET', 'POST', 'PUT', 'DELETE'], // Specify allowed methods
+    credentials: true // Allow credentials if needed
+}));
 
 app.get("/", (req, res) => {
     res.send("Hello world!");
