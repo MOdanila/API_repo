@@ -18,7 +18,7 @@ const Notes = () => {
     }, []);
     const addNote = async () => {
         try {
-            const response = await axios.post('http://localhost:5001/api/notes', {
+            const response = await axios.post('https://notes-backend-qx1b.onrender.com/api/notes', {
                 title,
                 description
             });
@@ -31,7 +31,7 @@ const Notes = () => {
     };
     const deleteNote = async (id) => {
         try {
-            await axios.delete(`http://localhost:5001/api/notes/${id}`);
+            await axios.delete(`https://notes-backend-qx1b.onrender.com/api/notes/${id}`);
             const newNotes = notes.filter((note) => note._id !== id);
             setNotes(newNotes);
         } catch (error) {
@@ -40,7 +40,7 @@ const Notes = () => {
     };
     const editNote = async (id) => {
         try {
-            const response = await axios.put(`http://localhost:5001/api/notes/${id}`, {
+            const response = await axios.put(`https://notes-backend-qx1b.onrender.com/api/notes/${id}`, {
                 title,
                 description
             });
