@@ -8,7 +8,7 @@ const Notes = () => {
     useEffect(() => {
         const fetchNotes = async () => {
             try {
-                const response = await axios.get('http://localhost:5001/api/notes');
+                const response = await axios.get('https://notes-backend-qx1b.onrender.com');
                 setNotes(response.data);
             } catch (error) {
                 console.error('Error fetching notes:', error);
